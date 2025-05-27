@@ -376,6 +376,7 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
 export interface ApiLandingPageLandingPage extends Struct.CollectionTypeSchema {
   collectionName: 'landing_pages';
   info: {
+    description: '';
     displayName: 'Landing Page';
     pluralName: 'landing-pages';
     singularName: 'landing-page';
@@ -394,6 +395,7 @@ export interface ApiLandingPageLandingPage extends Struct.CollectionTypeSchema {
       'api::landing-page.landing-page'
     > &
       Schema.Attribute.Private;
+    metadata: Schema.Attribute.Component<'seo.meta-data', false>;
     publishedAt: Schema.Attribute.DateTime;
     slug: Schema.Attribute.UID<'title'>;
     title: Schema.Attribute.String;
