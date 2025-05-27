@@ -1,5 +1,18 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksHero extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_heroes';
+  info: {
+    displayName: 'Hero';
+  };
+  attributes: {
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
+    link: Schema.Attribute.Component<'elements.button-link', false>;
+    text: Schema.Attribute.Text;
+  };
+}
+
 export interface ElementsButtonLink extends Struct.ComponentSchema {
   collectionName: 'components_elements_button_links';
   info: {
@@ -28,6 +41,7 @@ export interface SeoMetaData extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.hero': BlocksHero;
       'elements.button-link': ElementsButtonLink;
       'seo.meta-data': SeoMetaData;
     }
