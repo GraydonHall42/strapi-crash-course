@@ -10,6 +10,11 @@
     },
     "description": {
       "type": "text"
+    },
+    "plan": {
+      "type": "component",
+      "repeatable": true,
+      "component": "elements.pricing-card"
     }
   }
 }
