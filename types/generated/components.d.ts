@@ -13,6 +13,17 @@ export interface BlocksHero extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksRow extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_rows';
+  info: {
+    description: '';
+    displayName: 'Row';
+  };
+  attributes: {
+    card: Schema.Attribute.Component<'elements.card', true>;
+  };
+}
+
 export interface ElementsButtonLink extends Struct.ComponentSchema {
   collectionName: 'components_elements_button_links';
   info: {
@@ -23,6 +34,18 @@ export interface ElementsButtonLink extends Struct.ComponentSchema {
     link: Schema.Attribute.String;
     title: Schema.Attribute.String;
     type: Schema.Attribute.Enumeration<['PRIMARY', 'SECONDARY']>;
+  };
+}
+
+export interface ElementsCard extends Struct.ComponentSchema {
+  collectionName: 'components_elements_cards';
+  info: {
+    displayName: 'Card';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
   };
 }
 
@@ -42,7 +65,9 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.hero': BlocksHero;
+      'blocks.row': BlocksRow;
       'elements.button-link': ElementsButtonLink;
+      'elements.card': ElementsCard;
       'seo.meta-data': SeoMetaData;
     }
   }
