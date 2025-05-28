@@ -61,6 +61,31 @@ export interface ElementsCard extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsForm extends Struct.ComponentSchema {
+  collectionName: 'components_elements_forms';
+  info: {
+    displayName: 'Form';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'elements.button-link', false>;
+    description: Schema.Attribute.Text;
+    heading: Schema.Attribute.String;
+    input: Schema.Attribute.Component<'elements.input', true>;
+  };
+}
+
+export interface ElementsInput extends Struct.ComponentSchema {
+  collectionName: 'components_elements_inputs';
+  info: {
+    displayName: 'Input';
+  };
+  attributes: {
+    inputType: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    placeholder: Schema.Attribute.String;
+  };
+}
+
 export interface ElementsPricingCard extends Struct.ComponentSchema {
   collectionName: 'components_elements_pricing_cards';
   info: {
@@ -95,6 +120,8 @@ declare module '@strapi/strapi' {
       'blocks.row': BlocksRow;
       'elements.button-link': ElementsButtonLink;
       'elements.card': ElementsCard;
+      'elements.form': ElementsForm;
+      'elements.input': ElementsInput;
       'elements.pricing-card': ElementsPricingCard;
       'seo.meta-data': SeoMetaData;
     }
