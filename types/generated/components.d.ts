@@ -13,6 +13,17 @@ export interface BlocksHero extends Struct.ComponentSchema {
   };
 }
 
+export interface BlocksPricing extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_pricings';
+  info: {
+    displayName: 'Pricing';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksRow extends Struct.ComponentSchema {
   collectionName: 'components_blocks_rows';
   info: {
@@ -49,6 +60,20 @@ export interface ElementsCard extends Struct.ComponentSchema {
   };
 }
 
+export interface ElementsPricingCard extends Struct.ComponentSchema {
+  collectionName: 'components_elements_pricing_cards';
+  info: {
+    displayName: 'Pricing Card';
+  };
+  attributes: {
+    isFeatured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    link: Schema.Attribute.Component<'elements.button-link', true>;
+    planPrice: Schema.Attribute.String;
+    planType: Schema.Attribute.String;
+    services: Schema.Attribute.Relation<'oneToMany', 'api::service.service'>;
+  };
+}
+
 export interface SeoMetaData extends Struct.ComponentSchema {
   collectionName: 'components_seo_meta_data';
   info: {
@@ -65,9 +90,11 @@ declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'blocks.hero': BlocksHero;
+      'blocks.pricing': BlocksPricing;
       'blocks.row': BlocksRow;
       'elements.button-link': ElementsButtonLink;
       'elements.card': ElementsCard;
+      'elements.pricing-card': ElementsPricingCard;
       'seo.meta-data': SeoMetaData;
     }
   }
