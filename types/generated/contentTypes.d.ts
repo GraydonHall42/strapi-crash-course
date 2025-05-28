@@ -386,7 +386,7 @@ export interface ApiLandingPageLandingPage extends Struct.CollectionTypeSchema {
   };
   attributes: {
     blocks: Schema.Attribute.DynamicZone<
-      ['blocks.hero', 'blocks.row', 'blocks.pricing']
+      ['blocks.hero', 'blocks.row', 'blocks.pricing', 'blocks.cta']
     >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

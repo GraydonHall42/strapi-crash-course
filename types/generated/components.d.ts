@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface BlocksCta extends Struct.ComponentSchema {
+  collectionName: 'components_blocks_ctas';
+  info: {
+    displayName: 'Cta';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    form: Schema.Attribute.Component<'elements.form', true>;
+    heading: Schema.Attribute.String;
+  };
+}
+
 export interface BlocksHero extends Struct.ComponentSchema {
   collectionName: 'components_blocks_heroes';
   info: {
@@ -115,6 +127,7 @@ export interface SeoMetaData extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'blocks.cta': BlocksCta;
       'blocks.hero': BlocksHero;
       'blocks.pricing': BlocksPricing;
       'blocks.row': BlocksRow;
